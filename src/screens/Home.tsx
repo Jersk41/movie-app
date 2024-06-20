@@ -1,10 +1,6 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import HomeStackNavigator from '../navigations/HomeStackNavigation'
 
-export default function Home(): JSX.Element{
-    return (
-        <View>
-            <Text>Home</Text>
-        </View>
-    )
+export default function Home(): React.JSX.Element {
+  return <HomeStackNavigator />
 }
