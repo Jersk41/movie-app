@@ -54,7 +54,8 @@ const MovieItem = ({
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    marginRight: 4,
+    marginHorizontal: 4,
+    marginVertical: 4,
   },
   backgroundImageStyle: {
     borderRadius: 8,

@@ -53,6 +53,11 @@ export type HomeStackParamList = {
   MovieDetail: { data: Movie }
 }
 
+export type FavoriteStackParamList = {
+  Favorites: undefined
+  MovieDetail: { data: Movie }
+}
+
 export type MovieDetailScreenProps = NativeStackScreenProps<
   HomeStackParamList,
   'MovieDetail'
