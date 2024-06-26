@@ -53,8 +53,4 @@ const styles = StyleSheet.create({
   },
 })
 
-// export default function Home(): React.JSX.Element {
-//   return <HomeStackNavigator />
-// }
-
 export default Home

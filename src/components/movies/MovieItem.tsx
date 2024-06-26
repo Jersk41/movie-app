@@ -17,7 +17,9 @@ const MovieItem = ({
   coverType,
 }: MovieItemProps): React.JSX.Element => {
   const navigation = useNavigation()
-  const pushAction = StackActions.push('MovieDetail', { id: movie.id })
+  const pushAction = StackActions.push('MovieDetail', {
+    data: movie,
+  })
   return (
     <TouchableOpacity
       onPress={() => {
