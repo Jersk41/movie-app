@@ -1,7 +1,43 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
+import { API_URL, API_ACCESS_TOKEN } from '@env'
 
-export default function MovieDetail({ navigation }): React.JSX.Element {
+const MovieDetail = ({ navigation }: any): any => {
+  const fetchData = (): void => {
+    if (API_ACCESS_TOKEN == null || URL == null) {
+      throw new Error("ENV not found");
+    }
+
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${API_ACCESS_TOKEN}`,
+      },
+    }
+
+    fetch(API_URL, options)
+      .then(async (response) => await response.json())
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Movie Detail Page</Text>
+      <Button
+        title='Fetch Data'
+        onPress={() => fetchData()}
+      />
+    </View>
+  )
+}
+
+function MovieDetailFunc({ navigation }): React.JSX.Element {
   return (
     <View style={{ alignSelf: 'center', marginTop: '50%' }}>
       <Text style={{ marginBottom: 8 }}>Ini adalah halaman detail movie</Text>
@@ -14,3 +50,5 @@ export default function MovieDetail({ navigation }): React.JSX.Element {
     </View>
   )
 }
+
+export default MovieDetail
