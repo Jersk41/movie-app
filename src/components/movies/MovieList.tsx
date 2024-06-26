@@ -40,23 +40,29 @@ const MovieList = ({
         <View style={styles.purpleLabel}></View>
         <Text style={styles.title}>{title}</Text>
       </View>
-      <FlatList
-        style={{
-          ...styles.movieList,
-          maxHeight: coverImageSize[coverType].height,
-        }}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        data={movies}
-        renderItem={({ item }) => (
-          <MovieItem
-            movie={item}
-            size={coverImageSize[coverType]}
-            coverType={coverType}
-          />
-        )}
-        keyExtractor={(item) => item.id.toString()}
-      />
+      {movies.length !== 0 ? (
+        <FlatList
+          style={{
+            ...styles.movieList,
+            maxHeight: coverImageSize[coverType].height,
+          }}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          data={movies}
+          renderItem={({ item }) => (
+            <MovieItem
+              movie={item}
+              size={coverImageSize[coverType]}
+              coverType={coverType}
+            />
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        />
+      ) : (
+        <Text
+          style={styles.notFoundText}
+        >{`No ${title.toLowerCase()} founded :'(`}</Text>
+      )}
     </View>
   )
 }
@@ -82,6 +88,13 @@ const styles = StyleSheet.create({
   movieList: {
     paddingLeft: 4,
     marginTop: 8,
+  },
+  notFoundText: {
+    color: 'darkred',
+    fontSize: 20,
+    display: 'flex',
+    alignSelf: 'center',
+    marginTop: 24,
   },
 })
 

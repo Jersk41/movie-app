@@ -1,15 +1,22 @@
 import React from 'react'
-import { ImageBackground, Text, StyleSheet, View } from 'react-native'
+import {
+  ImageBackground,
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+} from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import MovieList from '../components/movies/MovieList'
 import { MovieDetailScreenProps } from '../types/app'
+import FavoriteSwitch from '../components/FavoriteSwitch'
 
 const MovieDetail = ({ route }: MovieDetailScreenProps): React.JSX.Element => {
   const movie = route.params.data
 
   return (
-    <>
+    <ScrollView style={{ overflow: 'visible' }}>
       <View>
         <ImageBackground
           resizeMode="cover"
@@ -24,9 +31,19 @@ const MovieDetail = ({ route }: MovieDetailScreenProps): React.JSX.Element => {
             style={styles.gradientStyle}
           >
             <Text style={styles.movieTitle}>{movie.title}</Text>
-            <View style={styles.ratingContainer}>
-              <FontAwesome name="star" size={16} color={'yellow'} />
-              <Text style={styles.rating}>{movie.vote_average}</Text>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'flex-end',
+              }}
+            >
+              <View style={styles.ratingContainer}>
+                <FontAwesome name="star" size={16} color={'yellow'} />
+                <Text style={styles.rating}>{movie.vote_average}</Text>
+              </View>
+              <FavoriteSwitch movie={movie} />
             </View>
           </LinearGradient>
         </ImageBackground>
@@ -56,8 +73,9 @@ const MovieDetail = ({ route }: MovieDetailScreenProps): React.JSX.Element => {
         title={'Recommendation'}
         path={`movie/${movie.id}/recommendations`}
         coverType={'poster'}
+        key={movie.title}
       />
-    </>
+    </ScrollView>
   )
 }
 
@@ -89,7 +107,7 @@ const styles = StyleSheet.create({
   },
   metaContainer: {
     padding: 16,
-    marginBottom: 8,
+    marginBottom: 4,
   },
   metaContent: {
     display: 'flex',

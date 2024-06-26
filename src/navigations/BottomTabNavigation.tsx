@@ -2,9 +2,9 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Feather } from '@expo/vector-icons'
 import Search from '../screens/Search'
-import Favorite from '../screens/Favorite'
 import HomeStackNavigator from './HomeStackNavigation'
 import { BottomTabParamList } from '../types/app'
+import FavoriteStackNavigator from './FavoriteStackNavigation'
 
 const Tab = createBottomTabNavigator<BottomTabParamList>()
 
@@ -32,7 +32,7 @@ const BottomTabNavigator = (): React.JSX.Element => (
     />
     <Tab.Screen
       name="Favorite"
-      component={Favorite}
+      component={FavoriteStackNavigator}
       options={{
         tabBarIcon: ({ color }) => (
           <Feather name="heart" size={28} color={color} />
