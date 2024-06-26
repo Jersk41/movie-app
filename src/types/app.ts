@@ -1,3 +1,5 @@
+import type { NativeStackScreenProps } from '@react-navigation/native-stack'
+
 export interface MovieListProps {
   title: string
   path: string
@@ -45,3 +47,23 @@ export interface MovieItemProps {
   size: { width: number; height: number }
   coverType: 'poster' | 'backdrop'
 }
+
+export type HomeStackParamList = {
+  Movie: undefined
+  MovieDetail: { data: Movie }
+}
+
+export type MovieDetailScreenProps = NativeStackScreenProps<
+  HomeStackParamList,
+  'MovieDetail'
+>
+
+export type BottomTabParamList = {
+  Home: undefined
+  Search: undefined
+  Favorite: undefined
+}
+
+// export type HomeScreenProps = NativeStackScreenProps<BottomTabParamList, 'Home'>
+// export type SearchScreenProps = NativeStackScreenProps<BottomTabParamList, 'Search'>
+// export type FavoriteScreenProps = NativeStackScreenProps<BottomTabParamList, 'Favorite'>

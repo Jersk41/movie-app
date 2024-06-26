@@ -1,13 +1,12 @@
 import React from 'react'
 import { ImageBackground, Text, StyleSheet, View } from 'react-native'
-import { Movie } from '../types/app'
 import { FontAwesome } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import MovieList from '../components/movies/MovieList'
+import { MovieDetailScreenProps } from '../types/app'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const MovieDetail = ({ route }: any): React.JSX.Element => {
-  const movie: Movie = route.params.data
+const MovieDetail = ({ route }: MovieDetailScreenProps): React.JSX.Element => {
+  const movie = route.params.data
 
   return (
     <>
@@ -41,7 +40,7 @@ const MovieDetail = ({ route }: any): React.JSX.Element => {
             <Text style={[styles.metaItemTitle, { marginTop: 4 }]}>
               Release Date:
             </Text>
-            <Text>{movie.release_date}</Text>
+            <Text>{movie.release_date.toString()}</Text>
           </View>
           <View style={styles.metaItem}>
             <Text style={styles.metaItemTitle}>Popularity:</Text>
