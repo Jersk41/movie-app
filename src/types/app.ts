@@ -48,6 +48,11 @@ export interface MovieItemProps {
   coverType: 'poster' | 'backdrop'
 }
 
+export interface Genre {
+  id: number
+  name: string
+}
+
 export type HomeStackParamList = {
   Movie: undefined
   MovieDetail: { data: Movie }
@@ -58,9 +63,20 @@ export type FavoriteStackParamList = {
   MovieDetail: { data: Movie }
 }
 
+export type SearchStackParamList = {
+  SearchScreen: undefined
+  CategorySearchResult: { genre: Genre }
+  MovieDetail: { data: Movie }
+}
+
 export type MovieDetailScreenProps = NativeStackScreenProps<
   HomeStackParamList,
   'MovieDetail'
+>
+
+export type CategorySearchResultScreenProps = NativeStackScreenProps<
+  SearchStackParamList,
+  'CategorySearchResult'
 >
 
 export type BottomTabParamList = {

@@ -69,7 +69,6 @@ const Favorite = (): React.JSX.Element => {
 }
 const styles = StyleSheet.create({
   movieList: {
-    paddingHorizontal: 8,
     marginHorizontal: 'auto',
     marginVertical: 8,
   },
